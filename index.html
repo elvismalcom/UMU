@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Registration Section -->
+    <section id="registration">
+        <div class="registration-container">
+            <h2 class="registration-title">UNI MARKET UGANDA</h2>
+
+            <h1>Create an Account</h1>
+            <form id="registration-form">
+                <!-- Username -->
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required />
+
+                <!-- Email -->
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+                <!-- WhatsApp Number -->
+                <label for="whatsapp">WhatsApp Number</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter your WhatsApp number" required />
+
+                <!-- Password -->
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" required />
+
+                <!-- Profile Picture -->
+                <label for="profile-picture">Profile Picture</label>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*" required />
+
+                <!-- Submit Button -->
+                <button type="submit">Create Account</button>
+            </form>
+            <p class="registration-note">AI won't take your jobs, but people using it will!! Shop from your hostel.</p>
+        </div>
+    </section>
+
+    <!-- Verification Section (Initially Hidden) -->
+    <section id="verification" style="display: none;">
+        <div class="verification-container">
+            <h1>Verification</h1>
+            <p>A verification code has been sent to your email/WhatsApp number. Please enter the code below.</p>
+            <form id="verification-form">
+                <label for="verification-code">Enter 6-Digit Code</label>
+                <input type="text" id="verification-code" name="verification-code" placeholder="Enter code" maxlength="6" required />
+                <button type="submit" id="verify-code">Verify</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Homepage Section (Initially Hidden) -->
+    <section id="mobile-homepage" class="mobile-homepage" style="display: none;">
+        <div class="mobile-header">
+            <h1>Home</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search" />
+                <button>🔍</button>
+            </div>
+        </div>
+
+        <!-- Category Grid -->
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="images/books.jpeg" alt="Textbooks" />
+                <p>Textbooks</p>
+            </div>
+            <div class="category-item">
+                <img src="images/GgJMpq8XIAAq6zL.jpeg" alt="Electronics" />
+                <p>Electronics</p>
+            </div>
+            <div class="category-item">
+                <img src="images/kitchen.jpeg" alt="Kitchen" />
+                <p>Kitchen</p>
+            </div>
+            <div class="category-item">
+                <img src="images/beddingss.jpeg" alt="Rooms" />
+                <p>Rooms</p>
+            </div>
+            <div class="category-item">
+                <img src="images/furniture.jpeg" alt="Furniture" />
+                <p>Furniture</p>
+            </div>
+            <div class="category-item">
+                <img src="images/cars.jpeg" alt="Vehicles" />
+                <p>Vehicles</p>
+            </div>
+            <div class="category-item">
+                <img src="images/beds.jpeg" alt="Beddings" />
+                <p>Beddings</p>
+            </div>
+            <div class="category-item">
+                <img src="images/clothing.png" alt="Clothing" />
+                <p>Clothing</p>
+            </div>
+           
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <div class="nav-item">Home</div>
+            <div class="nav-item">Search</div>
+            <div class="nav-item">Post</div>
+            <div class="nav-item">Profile</div>
+        </div>
+    </section>
+
+    <!-- University Selection Modal -->
+    <div id="university-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Select Your University</h2>
+            <p>Choose your university/campus to proceed:</p>
+            <input type="text" id="university-search" placeholder="Search university..." />
+            <div class="university-list">
+                <!-- Dynamically populated list -->
+            </div>
+            <button id="confirm-university" disabled>Confirm Selection</button>
+        </div>
+    </div>
+    <!-- Buy or Sell Prompt (Initially Hidden) -->
+<div id="buy-sell-prompt" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>What do you want to do?</h2>
+        <p>Please choose whether you want to buy or sell:</p>
+        <div class="buy-sell-options">
+            <button id="buy-btn" class="action-btn">Buy</button>
+            <button id="sell-btn" class="action-btn">Sell</button>
+        </div>
+        <button id="confirm-action" class="confirm-action" disabled>Proceed</button>
+    </div>
+</div>
+<!-- Category Specific Selection (Displayed After Buy/Sell is Chosen) -->
+<div id="category-specific-selection" style="display: none;">
+    <h3>What exactly are you looking for?</h3>
+    <div id="category-options">
+        <!-- Dynamic options for specific categories will appear here -->
+    </div>
+    <!-- Input for "Other" items -->
+    <div id="other-option">
+        <label for="other-item">Other (Please specify)</label>
+        <input type="text" id="other-item" placeholder="Enter item name" />
+    </div>
+    <button id="proceed-btn" style="display: none;">Proceed</button>
+</div>
+
+<!-- Sell Product Form (Initially Hidden) -->
+<div id="sell-product-form" style="display: none;">
+    <div class="form-container">
+        <h2>Provide Product Details</h2>
+        
+        <!-- Upload Product Images -->
+        <label for="product-images">Upload at least 3 product images</label>
+        <input type="file" id="product-images" name="product-images" accept="image/*" multiple required />
+        
+        <!-- Product Price -->
+        <label for="product-price">Price (UGX)</label>
+        <input type="number" id="product-price" name="product-price" placeholder="Enter price in UGX" required />
+        
+        <!-- Negotiability -->
+        <label for="negotiable">Is the price negotiable?</label>
+        <select id="negotiable" name="negotiable" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        
+        <!-- Product Description -->
+        <label for="product-description">Description (Max 500 words)</label>
+        <textarea id="product-description" name="product-description" rows="4" placeholder="Write a brief description" maxlength="500" required></textarea>
+        
+        <!-- Upload Button -->
+        <button id="upload-btn" type="button" disabled>Upload</button>
+    </div>
+</div>
+
+<!-- Success Message (Initially Hidden) -->
+<div id="success-message" style="display: none;">
+    <h2>GOOD LUCK!</h2>
+    <p>Your product has been successfully uploaded.</p>
+</div>
+<!-- Buyer Search Form -->
+<div id="buyer-search-form" style="display: none;">
+    <h2>Search for Items</h2>
+    
+    <!-- Max Price Input -->
+    <label for="max-price">Maximum Price (UGX)</label>
+    <input type="number" id="max-price" name="max-price" placeholder="Enter your max price in UGX" required />
+    
+    <!-- Search Button -->
+    <button id="search-btn">Search</button>
+</div>
+
+<!-- Display Filtered Products -->
+<div id="filtered-products" style="display: none;">
+    <h2>Available Items</h2>
+    <div id="product-list"></div> <!-- Dynamically populated list of products -->
+</div>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 University Marketplace. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
